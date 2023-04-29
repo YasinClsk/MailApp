@@ -57,12 +57,9 @@ namespace MailApp
         {
             try
             {
-                var password = _mailSettings.Password;
-                var imagePath = _env.WebRootPath + "/DiscountMailImages";
-
                 SmtpClient smtp = new()
                 {
-                    Credentials = new NetworkCredential(_mailSettings.From, password),
+                    Credentials = new NetworkCredential(_mailSettings.From, _mailSettings.Password),
                     Port = _mailSettings.SMTPPort,
                     EnableSsl = _mailSettings.SMTPEnableSsl,
                     Host = _mailSettings.SMTPHost
